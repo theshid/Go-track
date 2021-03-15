@@ -10,12 +10,9 @@ func IsIsogram(word string) bool {
 	replacer := strings.NewReplacer("-", "", " ", "")
 	trimWord := replacer.Replace(strings.ToLower(word))
 
-	wordInRune := []rune(trimWord)
-	stringMap := make(map[rune]int)
+	for _, value := range trimWord {
 
-	for i := 0; i < len(trimWord); i++ {
-		stringMap[wordInRune[i]]++
-		if stringMap[wordInRune[i]] > 1 {
+		if strings.Count(trimWord, string(value)) > 1 {
 			return false
 		}
 
