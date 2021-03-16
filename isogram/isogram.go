@@ -7,23 +7,23 @@ import (
 //IsIsogram is a function that determine if a given string have duplicate characters excluding hyphen and empty space
 func IsIsogram(word string) bool {
 
-	wordLowerCase := strings.ToLower(word)
-	stringMap := make(map[rune]bool)
+	repeated := map[rune]bool{}
 
-	for _, value := range wordLowerCase {
+	for _, value := range strings.ToLower(word) {
 
 		if value == '-' || value == ' ' {
 			continue
 		}
-		 if stringMap[value]{
+		 if repeated[value]{
 		 	return false
 		 }
-		 stringMap[value]=true
+		 repeated[value]=true
 
 	}
 
 	return true
 }
+
 
 
 
