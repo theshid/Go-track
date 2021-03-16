@@ -15,7 +15,7 @@ func IsIsogram(word string) bool {
 		if value == '-' || value == ' ' {
 			continue
 		}
-		 if _,ok:= stringMap[value];ok{
+		 if stringMap[value]{
 		 	return false
 		 }
 		 stringMap[value]=true
@@ -27,19 +27,3 @@ func IsIsogram(word string) bool {
 
 
 
-
-/*func IsIsogram(word string) bool {
-
-	replacer := strings.NewReplacer("-", "", " ", "")
-	trimWord := replacer.Replace(strings.ToLower(word))
-
-	for _, value := range trimWord {
-
-		if strings.Count(trimWord, string(value)) > 1 {
-			return false
-		}
-
-	}
-
-	return true
-}*/
