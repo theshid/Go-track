@@ -8,22 +8,23 @@ import (
 func IsIsogram(word string) bool {
 
 	wordLowerCase := strings.ToLower(word)
-	hyphenAndEmptySpace := []rune("- ")
-	stringMap := make(map[rune]int)
+	stringMap := make(map[rune]bool)
 
 	for _, value := range wordLowerCase {
-		stringMap[value]++
-		if value == hyphenAndEmptySpace[0] || value == hyphenAndEmptySpace[1] {
+
+		if value == '-' || value == ' ' {
 			continue
 		}
-		if stringMap[value] > 1 {
-			return false
-		}
+		 if _,ok:= stringMap[value];ok{
+		 	return false
+		 }
+		 stringMap[value]=true
 
 	}
 
 	return true
 }
+
 
 
 
