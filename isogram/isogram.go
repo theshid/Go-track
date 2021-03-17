@@ -9,15 +9,15 @@ func IsIsogram(word string) bool {
 
 	repeated := map[rune]bool{}
 
-	for _, value := range strings.ToLower(word) {
+	for _, r := range strings.ToLower(word) {
 
-		if value == '-' || value == ' ' {
+		if r == '-' || r == ' ' {
 			continue
 		}
-		 if repeated[value]{
+		 if repeated[r]{
 		 	return false
 		 }
-		 repeated[value]=true
+		 repeated[r]=true
 
 	}
 
