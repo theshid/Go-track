@@ -1,0 +1,10 @@
+int charPos = word.charAt(0) - 'a';
+
+
+It gives you the position relative to the a char in the character (ASCII) table. If the input char is lowercase, this is also the position in the alphabet (zero index based).
+
+Example:
+
+'Z' - 'a' gives you 90 - 97 = -7
+
+'b' - 'a' gives you 98 - 97 = 1
