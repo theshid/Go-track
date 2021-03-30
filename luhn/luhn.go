@@ -2,36 +2,33 @@ package luhn
 
 import (
 	"strings"
+	"unicode"
 )
 
-// Valid check if the given string satifies the luhn algorithm
+// Valid check if the given string satisfies the luhn algorithm
 func Valid(input string) bool {
-	trimInput := strings.ReplaceAll(input, " ", "")
+	trimInput := []rune(strings.ReplaceAll(input, " ", ""))
 	count := 0
 	if len(trimInput) <= 1 {
 		return false
 	}
-
+	isSecondDigit := false
 	for i := len(trimInput) - 1; i >= 0; i-- {
-		value:= trimInput[i]
-		if value >= '0' && value <='9' {
-			digit := int(value - '0')
-			if (i % 2) == (len(trimInput) % 2) {
-
-				if digit > 4 {
-					count += (digit * 2) - 9
-					continue
-				}
-				count += digit * 2
-				continue
-			}
-			count += digit
-		} else{
+		value := trimInput[i]
+		if !unicode.IsDigit(value) {
 			return false
 		}
-
+		digit := int(value - '0')
+		if digit >= 0 && digit <= 9 {
+			if isSecondDigit {
+				digit = digit * 2
+				if digit > 9 {
+					digit -= 9
+				}
+			}
+			count += digit
+			isSecondDigit = !isSecondDigit
+		}
 	}
-
 	return count%10 == 0
-
 }
