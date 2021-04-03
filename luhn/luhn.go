@@ -19,7 +19,7 @@ func Valid(input string) bool {
 			return false
 		}
 		if double {
-			digit = digit * 2
+			digit *= 2
 			if digit > 9 {
 				digit -= 9
 			}
